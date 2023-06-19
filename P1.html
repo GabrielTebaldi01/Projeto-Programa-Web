@@ -1,10 +1,53 @@
 <!DOCTYPE HTML>
     <html>
         <head></head>
-        <body>
+        
+        <style>
+            body 
+            
+            {
+                background-color: #4d2b04fa;
+            }
+            div {
+                height: 200px;
+                margin: 20px;
+                border: 5px solid;
+                background-color: #FBD603;
+            }
+        </style>
+       
+        <style type="text/css">
+            BODY {background-image: url(leo1.jpg); background-repeat:no-repeat;background-position: 750px 0px;   
+            }
+        </style>
+
+       
+            
+        
+
+            <body>
+         
             <p>
             <script>
-            
+                function Calculo(){
+                    let Camisa = (document.getElementById("Camisa").value);
+                    let pre = ( document.getElementById("pre").value);
+                    let cinto =(document.getElementById("cinto").value);
+                    let strap = (document.getElementById("strap").value);
+                    let creatina = (document.getElementById("creatina").value);
+                    let Nome = document.getElementById("nome").value;
+                    let Email = document.getElementById("email").value;
+
+
+                    let quest = (Camisa * 70) + (pre * 110) + (cinto * 99) + (strap * 33.90) + (creatina * 88.80);
+
+                    document.getElementById('res').innerHTML = "Nome do comprador: " + Nome + "," + "Email do comprador: " + Email + "," + "Valor da compra: " + (quest) + "R$";
+
+                    
+                    
+                }
+
+                    
             </script>
             </p>
 
@@ -17,11 +60,11 @@
             <br><br>
 
 
-            <table border="1">
+            <table width="60%" border="1" bgcolor="white"  style="position:absolute;  left: 40px; top: 220px;" >
                 
                 <thead>
                 <tr>
-                    <th>Durateston</th>
+                    <th>Camisa de treino</th>
                     <th>Pré treino</th>
                     <th>Cinto</th>
                     <th>Strap</th>
@@ -31,26 +74,36 @@
 
                 <tbody>
                 <tr>
-                    <td><img src="Dura.jpg"><br><strong> 20,00 R$ (Unidade) </strong></td>
+                    <td><img src="Camisa.jpg"><br><strong> 70,00 R$ (Unidade) </strong></td>
                     <td><img src="pre.jpg"><br><strong> 110,00 R$ (Unidade) </strong></td>
                     <td><img src="cinto.jpg"><br><br><br><br><br><br><strong> 99,00 R$ (Unidade) </strong></td>
                     <td><img src="strap.jpg"><br><strong> 33,90 R$ (Unidade) </strong></td>
                     <td><img src="creatina.jpg"><br><strong> 88,80 R$ (Unidade) </strong></td>
                 </tr>
                 <tr>
-                    <td><p>Quantidade</p><input type="number" id="Dura"></td>
+                    <td><p>Quantidade</p><input type="number" id="Camisa"></td>
                     <td><p>Quantidade</p><input type="number" id="pre"></td>
                     <td><p>Quantidade</p><input type="number" id="cinto"></td>
                     <td><p>Quantidade</p><input type="number" id="strap"></td>
                     <td><p>Quantidade</p><input type="number" id="creatina"></td>
                 </tr>
+
+                
+                 <table width="80%"  style="position:absolute;  left: 1050px; top: 60px;">
+                    <tr>
+                    <td><button type="button" onclick="Calculo()" >Calcule sua compra</button></td>
+                    </tr>
+
+                    <tr>
+                    <td><p id="res">Resposta: </p></td>
+                    </tr>
+                </table>
+                
+                
+
                 </tbody>
             </table>
         
             </body>
     </html>
-
-    
-    
-    
     
