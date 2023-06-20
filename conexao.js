@@ -8,6 +8,8 @@ password: "01122001",
 database: "site"
 });
 
+
+
 con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
@@ -17,4 +19,6 @@ con.connect(function(err) {
     console.log("Table created");
     });
     });
+
+    
     

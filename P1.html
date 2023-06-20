@@ -1,6 +1,11 @@
 <!DOCTYPE HTML>
-    <html>
-        <head></head>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+
+
         
         <style>
             body 
@@ -29,6 +34,22 @@
          
             <p>
             <script>
+            
+            document.getElementById("myForm").addEventListener("submit", function(event){
+            event.preventDefault();
+
+            let Nome = document.getElementById("nome").value;
+            let Email = document.getElementById("email").value;
+
+            var str = "http://localhost:3306/a.b?";  /* Após o ?, colocamos os dados do formulário */
+                str = str + "nome=" + Nome;
+                str = str + "&" + "email=" + Email;
+
+                window.location.href = str; /* Redirecionando para o servidor*/
+
+        });
+
+
                 function Calculo(){
                     let Camisa = (document.getElementById("Camisa").value);
                     let pre = ( document.getElementById("pre").value);
@@ -43,7 +64,7 @@
 
                     document.getElementById('res').innerHTML = "Nome do comprador: " + Nome + "," + "Email do comprador: " + Email + "," + "Valor da compra: " + (quest) + "R$";
 
-                    
+                    return quest
                     
                 }
 
@@ -52,12 +73,13 @@
             </p>
 
             
+            <form id = "myForm">
+                <label for = "nome">Nome:</label>
+                <input type = "text" id = "nome" name = "nome">
+                <label for = "bairro">Bairro:</label>
+                <input type = "text" id = "email" name = "email">
+            </form>
             
-            <p> Nome: </p>
-            <input type="text" id="nome"><br>
-            <p> Email: </p>
-            <input type="text" id="email"><br>
-            <br><br>
 
 
             <table width="60%" border="1" bgcolor="white"  style="position:absolute;  left: 40px; top: 220px;" >
