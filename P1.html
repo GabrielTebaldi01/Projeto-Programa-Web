@@ -1,57 +1,86 @@
-<!DOCTYPE HTML>
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de conexão com banco de dados</title>
+</head>
 
+<style>
+    body 
+    
+    {
+        background-color: #4d2b04fa;
+    }
+    div {
+        height: 200px;
+        margin: 20px;
+        border: 5px solid;
+        background-color: #FBD603;
+    }
+</style>
+
+<style type="text/css">
+    BODY {background-image: url(leo1.jpg); background-repeat:no-repeat;background-position: 750px 0px;   
+    }
+</style>
+
+<body>
+
+    <h1>Bem vindo</h1>
+    <p>Preencha os campos a seguir:</p>
+
+    <form id = "myForm">
+        <label for = "nome">Nome:</label>
+        <input type = "text" id = "nome" name = "nome">
+        <label for = "email">Email:</label>
+        <input type = "text" id = "email" name = "email">
+        <button type="button" onclick="Calculo()" >Calcule sua compra</button>
+        <p id="res">Resposta: </p>
+        <input type = "submit" value = "Enviar">
+    </form>
+
+
+    <table width="60%" border="1" bgcolor="white"  style="position:absolute;  left: 40px; top: 220px;" >
+                
+        <thead>
+        <tr>
+            <th>Camisa de treino</th>
+            <th>Pré treino</th>
+            <th>Cinto</th>
+            <th>Strap</th>
+            <th>Creatina</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td><img src="Camisa.jpg"><br><strong> 70,00 R$ (Unidade) </strong></td>
+            <td><img src="pre.jpg"><br><strong> 110,00 R$ (Unidade) </strong></td>
+            <td><img src="cinto.jpg"><br><br><br><br><br><br><strong> 99,00 R$ (Unidade) </strong></td>
+            <td><img src="strap.jpg"><br><strong> 33,90 R$ (Unidade) </strong></td>
+            <td><img src="creatina.jpg"><br><strong> 88,80 R$ (Unidade) </strong></td>
+        </tr>
+        <tr>
+            <td><p>Quantidade</p><input type="number" id="camisa"></td>
+            <td><p>Quantidade</p><input type="number" id="pre"></td>
+            <td><p>Quantidade</p><input type="number" id="cinto"></td>
+            <td><p>Quantidade</p><input type="number" id="strap"></td>
+            <td><p>Quantidade</p><input type="number" id="creatina"></td>
+        </tr>
 
         
-        <style>
-            body 
-            
-            {
-                background-color: #4d2b04fa;
-            }
-            div {
-                height: 200px;
-                margin: 20px;
-                border: 5px solid;
-                background-color: #FBD603;
-            }
-        </style>
-       
-        <style type="text/css">
-            BODY {background-image: url(leo1.jpg); background-repeat:no-repeat;background-position: 750px 0px;   
-            }
-        </style>
-
-       
-            
+        
         
 
-            <body>
-         
-            <p>
-            <script>
-            
-            document.getElementById("myForm").addEventListener("button", function(Calculo){
-            event.preventDefault();
+        </tbody>
+    </table>
 
-            let Nome = document.getElementById("nome").value;
-            let Email = document.getElementById("email").value;
-
-            var str = "http://localhost:8080/a.b?"; 
-                str = str + "nome=" + Nome;
-                str = str + "&" + "email=" + Email;
-
-                window.location.href = str; 
-
-        });
+    <script>
 
 
-                function Calculo(){
-                    let Camisa = (document.getElementById("Camisa").value);
+function Calculo(){
+                    let Camisa = (document.getElementById("camisa").value);
                     let pre = ( document.getElementById("pre").value);
                     let cinto =(document.getElementById("cinto").value);
                     let strap = (document.getElementById("strap").value);
@@ -64,68 +93,27 @@
 
                     document.getElementById('res').innerHTML = "Nome do comprador: " + Nome + "," + "Email do comprador: " + Email + "," + "Valor da compra: " + (quest) + "R$";
 
-                    return quest
+                    return quest;
                     
                 }
 
-                    
-            </script>
-            </p>
 
-            
-            <form id = "myForm">
-                <label for = "nome">Nome:</label>
-                <input type = "text" id = "nome" name = "nome">
-                <label for = "email">Email:</label>
-                <input type = "text" id = "email" name = "email">
-            </form>
-            
+        document.getElementById("myForm").addEventListener("submit", function(event){
+            event.preventDefault();
+            var Nome = document.getElementById("nome").value;
+            var Email = document.getElementById("email").value;
+            var Total = Calculo();
+            /* Construindo string para passar parâmetros para o servidor (.JS)*/
 
+            var str = "http://localhost:8080/a.b?";  /* Após o ?, colocamos os dados do formulário */
+                str = str + "nome=" + Nome;
+                str = str + "&" + "email=" + Email;
+                str = str + "&" + "calculo=" + Total;
 
-            <table width="60%" border="1" bgcolor="white"  style="position:absolute;  left: 40px; top: 220px;" >
-                
-                <thead>
-                <tr>
-                    <th>Camisa de treino</th>
-                    <th>Pré treino</th>
-                    <th>Cinto</th>
-                    <th>Strap</th>
-                    <th>Creatina</th>
-                </tr>
-                </thead>
+                window.location.href = str; /* Redirecionando para o servidor*/
 
-                <tbody>
-                <tr>
-                    <td><img src="Camisa.jpg"><br><strong> 70,00 R$ (Unidade) </strong></td>
-                    <td><img src="pre.jpg"><br><strong> 110,00 R$ (Unidade) </strong></td>
-                    <td><img src="cinto.jpg"><br><br><br><br><br><br><strong> 99,00 R$ (Unidade) </strong></td>
-                    <td><img src="strap.jpg"><br><strong> 33,90 R$ (Unidade) </strong></td>
-                    <td><img src="creatina.jpg"><br><strong> 88,80 R$ (Unidade) </strong></td>
-                </tr>
-                <tr>
-                    <td><p>Quantidade</p><input type="number" id="Camisa"></td>
-                    <td><p>Quantidade</p><input type="number" id="pre"></td>
-                    <td><p>Quantidade</p><input type="number" id="cinto"></td>
-                    <td><p>Quantidade</p><input type="number" id="strap"></td>
-                    <td><p>Quantidade</p><input type="number" id="creatina"></td>
-                </tr>
-
-                
-                 <table width="80%"  style="position:absolute;  left: 1050px; top: 60px;">
-                    <tr>
-                    <td><button type="button" onclick="Calculo()" >Calcule sua compra</button></td>
-                    </tr>
-
-                    <tr>
-                    <td><p id="res">Resposta: </p></td>
-                    </tr>
-                </table>
-                
-                
-
-                </tbody>
-            </table>
-        
-            </body>
-    </html>
+        });
+    </script>
     
+</body>
+</html>
