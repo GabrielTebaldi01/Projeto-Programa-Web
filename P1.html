@@ -103,14 +103,13 @@ function Calculo(){
             var Nome = document.getElementById("nome").value;
             var Email = document.getElementById("email").value;
             var Total = Calculo();
-            /* Construindo string para passar parâmetros para o servidor (.JS)*/
-
-            var str = "http://localhost:8080/a.b?";  /* Após o ?, colocamos os dados do formulário */
+            
+            var str = "http://localhost:8080/a.b?";  
                 str = str + "nome=" + Nome;
                 str = str + "&" + "email=" + Email;
                 str = str + "&" + "calculo=" + Total;
 
-                window.location.href = str; /* Redirecionando para o servidor*/
+                window.location.href = str; 
 
         });
     </script>

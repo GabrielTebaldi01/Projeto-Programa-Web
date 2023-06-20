@@ -1,6 +1,6 @@
 const {response} = require ('express');
 var http = require('http');
-var url = require('url');       /* Para recuperar nome e bairro passados do arquivo HTML */
+var url = require('url');       
 
 http.createServer(
     function(req, res){
@@ -14,7 +14,7 @@ http.createServer(
         res.write("<body>");
         res.write("<p>Dados de compra cadastrados com sucesso!!...</p>");
 
-        /* Recuperando os dados que vieram do HTML */
+        
 
         var querystring = url.parse(req.url, true).query;
         var Nome = querystring['nome'];
