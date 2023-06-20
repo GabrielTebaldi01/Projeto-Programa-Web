@@ -35,17 +35,17 @@
             <p>
             <script>
             
-            document.getElementById("myForm").addEventListener("submit", function(event){
+            document.getElementById("myForm").addEventListener("button", function(Calculo){
             event.preventDefault();
 
             let Nome = document.getElementById("nome").value;
             let Email = document.getElementById("email").value;
 
-            var str = "http://localhost:3306/a.b?";  /* Após o ?, colocamos os dados do formulário */
+            var str = "http://localhost:8080/a.b?"; 
                 str = str + "nome=" + Nome;
                 str = str + "&" + "email=" + Email;
 
-                window.location.href = str; /* Redirecionando para o servidor*/
+                window.location.href = str; 
 
         });
 
@@ -76,7 +76,7 @@
             <form id = "myForm">
                 <label for = "nome">Nome:</label>
                 <input type = "text" id = "nome" name = "nome">
-                <label for = "bairro">Bairro:</label>
+                <label for = "email">Email:</label>
                 <input type = "text" id = "email" name = "email">
             </form>
             
